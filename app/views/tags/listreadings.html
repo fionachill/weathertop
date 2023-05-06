@@ -1,0 +1,56 @@
+<table class="table">
+  <thead>
+    <tr>
+      <div class="column is-5">
+        <div class="card has-text-centered">
+          <th class="card-content is-dark">${_station.name} </th>
+          <th class="card-content is-dark">Weather</th>
+          <th class="card-content is-dark">Temp</th>
+          <th class="card-content is-dark">Wind</th>
+          <th class="card-content is-dark">Pressure</th>
+        </div>
+      </tr>
+          <tr>
+              <td class="card-content is-dark">  </td>
+              <td class="card-content is-dark">${_station.listLatestReading().weatherConditions()}</td>
+              <td class="card-content is-dark">${_station.listLatestReading().getTemperature()} C
+                <br>${_station.listLatestReading().FTemp()} F</td>
+              <td class="card-content is-dark">${_station.listLatestReading().getBeaufort()} bft
+              <br> ${_station.listLatestReading().getWindCompass()}
+              <br> Feels like
+              <br> ${_station.listLatestReading().getWindChill()}</td>
+              <td class="card-content is-dark">${_station.listLatestReading().getPressure()} hpa</td>
+            </div>
+          </div>
+        </tr>
+  <tr>
+    <th>Code</th>
+    <th>Temperature</th>
+    <th>Windspeed</th>
+    <th>Wind Direction</th>
+    <th>Pressure</th>
+  </tr>
+  </thead>
+  #{list items:_station.readings, as:'reading'}
+  <tbody>
+  <tr>
+    <td>
+      ${reading.code}
+    </td>
+    <td>
+      ${reading.temperature}
+    </td>
+    <td>
+      ${reading.windSpeed}
+    </td>
+    <td>
+      ${reading.windDirection}
+    </td>
+    <td>
+      ${reading.pressure}
+    </td>
+  </tr>
+  #{/list}
+  </tbody>
+</table>
+
