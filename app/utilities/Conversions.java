@@ -122,6 +122,13 @@ public class Conversions extends Controller{
         return toTwoDecimalPlaces(windChill);
     }
 
+    public static double latitude(double latitude){
+        return toTwoDecimalPlaces(latitude);
+    }
+    public static double longitude(double longitude){
+        return toTwoDecimalPlaces(longitude);
+    }
+
     private static double toTwoDecimalPlaces(double num){
         return (int) (num*100)/100.0;
     }
