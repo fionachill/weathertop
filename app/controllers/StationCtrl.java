@@ -26,13 +26,12 @@ public class StationCtrl extends Controller {
     }
 
     public static void deleteReading(Long id, Long readingid){
-        Member member = Accounts.getLoggedInMember();
         Station station = Station.findById(id);
         Reading reading = Reading.findById(readingid);
         Logger.info ("Removing" + readingid);
         station.readings.remove(reading);
         station.save();
         reading.delete();
-        render("station.html");
+        render("station.html", station);
     }
 }

@@ -14,7 +14,7 @@ GET     /logout                                 Accounts.logout
 # Station & Readings
 GET     /station/{id}                           StationCtrl.index
 POST    /station/{id}/addreading                StationCtrl.addReading
-GET     /station/{id}/deletereading             StationCtrl.deleteReading
+GET     /station/{id}/deletereading/{readingid} StationCtrl.deleteReading
 
 POST    /dashboard/addstation                   Dashboard.addStation
 

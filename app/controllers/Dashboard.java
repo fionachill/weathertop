@@ -18,19 +18,21 @@ public class Dashboard extends Controller
   }
 
   public static void addStation(String name, double latitude, double longitude){
+    Member member = Accounts.getLoggedInMember();
     Station station = new Station(name, latitude, longitude);
+    member.stations.add(station);
+    member.save();
     Logger.info ("Adding a new station called " + name);
-    station.save();
     redirect ("/dashboard");
   }
 
-  public static void deleteStation(Long id){
-    Logger.info("Deleting Station");
-    Member member = Accounts.getLoggedInMember();
-    Station station = Station.findById(id);
+  public static void deleteStation(Long id, Long stationid){
+    Member member = Member.findById(id);
+    Station station = Station.findById(stationid);
     member.stations.remove(station);
     member.save();
     station.delete();
+    Logger.info("Deleting Station");
     redirect("/dashboard");
   }
 
