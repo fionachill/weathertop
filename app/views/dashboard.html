@@ -8,7 +8,12 @@
   <h1 class="title">
     ${station.name}
   </h1>
-    <a href ="/station/${station.id}" class ="icon has-text-primary"><i class="fa-solid fa-folder-open"></i></a>
+    <a href ="/station/${station.id}" class ="icon has-text-primary">
+      <i class="fa-solid fa-folder-open"></i>
+    </a>
+    <a href ="/dashboard/deleteStation/${station.id}" class="icon has-text-danger">
+      <i class="fa-solid fa-trash"></i>
+    </a>
 </div>
 #{/list}
 #{addstation /}
