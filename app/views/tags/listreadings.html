@@ -1,74 +1,84 @@
-<table class="table">
-  <thead>
-    <tr>
-        <div class="columns">
-          <div class="card has-text-centered">
-            <th class="card-content is-dark">${_station.name} </th>
-            <th class="card-content is-dark">Weather</th>
-            <th class="card-content is-dark">Temp</th>
-            <th class="card-content is-dark">Wind</th>
-            <th class="card-content is-dark">Pressure</th>
-          </div>
+<div class="columns">
+    <div class="column">
+        <div class="card-content is-dark">
+            <h2>${_station.name}</h2>
+            <p>Lat: ${_station.getLat()}<br> Lng: ${_station.getLong()}</p>
         </div>
-      </tr>
-          <tr class>
-              <td class="card-content is-dark">
-                Lat: ${_station.getLat()}
-                <br> Lng: ${_station.getLong()}
-              </td>
-              <td class="card-content is-dark"><p>${_station.listLatestReading().weatherConditions()}</p></td>
-              <td class="card-content is-dark">
+    </div>
+    <div class="column">
+        <div class="card-content is-dark">
+            <h2>Weather</h2>
+            <p>${_station.listLatestReading().weatherConditions()}</p>
+        </div>
+    </div>
+    <div class="column">
+        <div class="card-content is-dark">
+            <h2>Temp</h2>
+            <p>
                 ${_station.listLatestReading().getTemperature()} C
                 <br>${_station.listLatestReading().FTemp()} F
-                <br> Max:
-                <br> Min:
-              </td>
-              <td class="card-content is-dark">${_station.listLatestReading().getBeaufort()} bft
-              <br> ${_station.listLatestReading().getWindCompass()}
-              <br> Feels like
-              <br> ${_station.listLatestReading().getWindChill()}
-              <br> Max:
-              <br> Min: </td>
-              <td class="card-content is-dark">
+                <br> Max: ${_station.getMaxTemp()}
+                <br> Min: ${_station.getMinTemp()}
+            </p>
+        </div>
+    </div>
+    <div class="column">
+        <div class="card-content is-dark">
+            <h2>Wind</h2>
+            <p>
+                ${_station.listLatestReading().getBeaufort()} bft
+                <br> ${_station.listLatestReading().getWindCompass()}
+                <br> Feels like:
+                <br> ${_station.listLatestReading().getWindChill()}
+                <br> Max: ${_station.getMaxSpeed()}
+                <br> Min: ${_station.getMinSpeed()}
+            </p>
+        </div>
+    </div>
+    <div class="column">
+        <div class="card-content is-dark">
+            <h2>Pressure</h2>
+            <p>
                 ${_station.listLatestReading().getPressure()} hpa
-              <br> Max:
-              <br>
-              <br> Min:
-              <br></td>
-            </div>
-          </div>
-        </tr>
-  <tr>
-    <th>Code</th>
-    <th>Temperature</th>
-    <th>Windspeed</th>
-    <th>Wind Direction</th>
-    <th>Pressure</th>
-  </tr>
-  </thead>
-  #{list items:_station.readings, as:'reading'}
-  <tbody>
-  <tr>
-    <td>
-      ${reading.code}
-    </td>
-    <td>
-      ${reading.temperature}
-    </td>
-    <td>
-      ${reading.windSpeed}
-    </td>
-    <td>
-      ${reading.windDirection}
-    </td>
-    <td>
-      ${reading.pressure}
-    </td>
-    <td>
-      <a href="/station/${_station.id}/deletereading/${reading.id}" class="button is-danger">Delete Report</a>
-    </td>
-  </tr>
-  #{/list}
-  </tbody>
+                <br> Max: ${_station.getMaxPressure()}
+                <br> Min: ${_station.getMinPressure()}
+            </p>
+        </div>
+    </div>
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Code</th>
+        <th>Temperature</th>
+        <th>Windspeed</th>
+        <th>Wind Direction</th>
+        <th>Pressure</th>
+    </tr>
+    </thead>
+    #{list items:_station.readings, as:'reading'}
+    <tbody>
+    <tr>
+        <td>
+            ${reading.code}
+        </td>
+        <td>
+            ${reading.temperature}
+        </td>
+        <td>
+            ${reading.windSpeed}
+        </td>
+        <td>
+            ${reading.windDirection}
+        </td>
+        <td>
+            ${reading.pressure}
+        </td>
+        <td>
+            <a href="/station/${_station.id}/deletereading/${reading.id}" class="button is-danger">Delete Report</a>
+        </td>
+    </tr>
+    #{/list}
+    </tbody>
 </table>
 

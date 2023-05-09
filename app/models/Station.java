@@ -46,4 +46,75 @@ public class Station extends Model
             return latestReading;
         }
     }
+    public double getMaxTemp(){
+        double maxTemp = 0;
+        if(readings.size() > 0){
+            maxTemp = readings.get(0).getTemperature();
+            for(Reading reading: readings){
+                if(reading.getTemperature() > maxTemp){
+                    maxTemp = reading.getTemperature();
+                }
+            }
+        }return maxTemp;
+    }
+
+    public double getMinTemp(){
+        double minTemp = 0;
+        if(readings.size() > 0){
+            minTemp = readings.get(0).getTemperature();
+            for(Reading reading: readings){
+                if(reading.getTemperature() < minTemp){
+                    minTemp = reading.getTemperature();
+                }
+            }
+        }return minTemp;
+    }
+
+    public double getMaxSpeed(){
+        double maxSpeed = 0;
+        if(readings.size() > 0){
+            maxSpeed = readings.get(0).getWindSpeed();
+            for(Reading reading: readings){
+                if(reading.getWindSpeed() > maxSpeed){
+                    maxSpeed = reading.getWindSpeed();
+                }
+            }
+        }return maxSpeed;
+    }
+    public double getMinSpeed(){
+        double minSpeed = 0;
+        if(readings.size() > 0){
+            minSpeed = readings.get(0).getWindSpeed();
+            for(Reading reading: readings){
+                if(reading.getWindSpeed() < minSpeed){
+                    minSpeed = reading.getWindSpeed();
+                }
+            }
+        }return minSpeed;
+    }
+
+    public int getMaxPressure(){
+        int maxPressure = 0;
+        if(readings.size() > 0){
+            maxPressure = readings.get(0).getPressure();
+            for(Reading reading: readings){
+                if(reading.getPressure() > maxPressure){
+                    maxPressure = reading.getPressure();
+                }
+            }
+        }return maxPressure;
+    }
+
+    public int getMinPressure(){
+        int minPressure = 0;
+        if(readings.size() > 0){
+            minPressure = readings.get(0).getPressure();
+            for(Reading reading: readings){
+                if(reading.getPressure() < minPressure){
+                    minPressure = reading.getPressure();
+                }
+            }
+        }return minPressure;
+    }
+
 }

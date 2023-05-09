@@ -117,11 +117,14 @@ public class Conversions extends Controller{
         return windCompass;
     }
 
-    public static double windChill(double temperature, double wSpeed){
-        double windChill = (13.12 + (0.6215* temperature) - 11.37 *(Math.pow(wSpeed, 0.16)) + (0.3965*temperature) * (Math.pow(wSpeed, 0.16)));
-        return toTwoDecimalPlaces(windChill);
+    public static double windChill(double temperature, double wSpeed) {
+        if ((temperature > 9) && (wSpeed > 4.8)) {
+            double windChill = (13.12 + (0.6215 * temperature) - 11.37 * (Math.pow(wSpeed, 0.16)) + (0.3965 * temperature) * (Math.pow(wSpeed, 0.16)));
+            return toTwoDecimalPlaces(windChill);
+        } else {
+            return temperature;
+        }
     }
-
     public static double latitude(double latitude){
         return toTwoDecimalPlaces(latitude);
     }
