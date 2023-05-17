@@ -48,6 +48,38 @@ public class Conversions extends Controller{
          return weather;
        }
 
+       public static String wCodeIcon(int code){
+        String wCodeIcon = "";
+           switch (code) {
+               case 100:
+                   wCodeIcon = "fa-solid fa-sun";
+                   break;
+               case 200:
+                   wCodeIcon = wCodeIcon + "fa-solid fa-cloud-sun";
+                   break;
+               case 300:
+                   wCodeIcon = wCodeIcon + "fa-solid fa-cloud";
+                   break;
+               case 400:
+                   wCodeIcon = wCodeIcon + "fa-solid fa-cloud-rain";
+                   break;
+               case 500:
+                   wCodeIcon = wCodeIcon +"fa-solid fa-cloud-showers-heavy";
+                   break;
+               case 600:
+                   wCodeIcon = wCodeIcon + "fa-solid fa-cloud-showers-water";
+                   break;
+               case 700:
+                   wCodeIcon = wCodeIcon + "fa-solid fa-snowflake";
+                   break;
+               case 800:
+                   wCodeIcon = wCodeIcon + "fa-solid fa-cloud-bolt";
+                   break;
+           }
+           return wCodeIcon;
+       }
+
+
     public static int convertToBFort(double wSpeed) {
         //we want this to take in the wSpeed and determine the beaufort
         int bFort = 0;

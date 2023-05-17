@@ -1,0 +1,70 @@
+<div class="tile is-ancestor">
+    <div class="tile is-parent">
+        <article class="tile is-child box has-background-grey-darker">
+            <p class="title has-text-white">
+                ${_station.name}
+                <span class ="icon is-large">
+                        <i class="fa-sharp fa-solid fa-compass"></i>
+                        </span>
+            </p>
+            <p class="subtitle has-text-white">Lat: ${_station.getLat()}<br> Lng: ${_station.getLong()}</p>
+        </article>
+    </div>
+    <div class="tile is-parent">
+        <div class="tile is-child box has-background-grey-darker">
+            <p class="title has-text-white">
+                Weather
+                <span class="icon is-large">
+                    <i class="${_station.listLatestReading().getWCodeIcon()}"></i>
+                </span>
+            </p>
+            <p class="subtitle has-text-white">${_station.listLatestReading().weatherConditions()} <br>  </p>
+        </div>
+    </div>
+    <div class="tile is-parent">
+        <div class="tile is-child box has-background-grey-darker">
+            <p class="title has-text-white">Temp
+                <span class="icon is-large">
+                        <i class="fa-solid fa-temperature-quarter"></i>
+                    </span>
+            </p>
+            <p class="subtitle has-text-white">
+                ${_station.listLatestReading().getTemperature()} C
+                <br>${_station.listLatestReading().FTemp()} F
+                <br> Max: ${_station.getMaxTemp()}
+                <br> Min: ${_station.getMinTemp()}
+            </p>
+        </div>
+    </div>
+    <div class="tile is-parent">
+        <div class="tile is-child box has-background-grey-darker">
+            <p class="title has-text-white">Wind
+                <span class="icon is-large">
+                        <i class="fa-solid fa-wind"></i>
+                    </span>
+            </p>
+            <p class="subtitle has-text-white">
+                ${_station.listLatestReading().getBeaufort()} bft
+                <br> ${_station.listLatestReading().getWindCompass()}
+                <br> Feels like:
+                <br> ${_station.listLatestReading().getWindChill()}
+                <br> Max: ${_station.getMaxSpeed()}
+                <br> Min: ${_station.getMinSpeed()}
+            </p>
+        </div>
+    </div>
+    <div class="tile is-parent">
+        <div class="tile is-child box has-background-grey-darker">
+            <p class="title has-text-white">Pressure
+                <span class="icon is-large">
+                        <i class="fa-solid fa-tornado"></i>
+                    </span>
+            </p>
+            <p class="subtitle has-text-white">
+                ${_station.listLatestReading().getPressure()} hpa
+                <br> Max: ${_station.getMaxPressure()}
+                <br> Min: ${_station.getMinPressure()}
+            </p>
+        </div>
+    </div>
+</div>

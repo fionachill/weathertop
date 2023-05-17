@@ -63,5 +63,6 @@ public class Reading extends Model
         return Conversions.windChill(this.temperature, this.windSpeed);
     }
 
+    public String getWCodeIcon(){ return Conversions.wCodeIcon(this.code);}
 
 }
