@@ -12,15 +12,14 @@ import play.Logger;
 import play.mvc.Controller;
 
 public class StationCtrl extends Controller {
-    public static void index(Long id)
-    {
+    public static void index(Long id) {
         Station station = Station.findById(id);
-        Logger.info ("Station id = " + id);
+        Logger.info("Station id = " + id);
         render("station.html", station);
     }
 
 
-    public static void addReading(String date, Long id,int code, double temperature, double windSpeed, int pressure, double windDirection){
+    public static void addReading(String date, Long id, int code, double temperature, double windSpeed, int pressure, double windDirection) {
         Member member = Accounts.getLoggedInMember();
         Reading reading = new Reading(date, code, temperature, windSpeed, pressure, windDirection);
         Station station = Station.findById(id);
@@ -29,10 +28,10 @@ public class StationCtrl extends Controller {
         redirect("/station/" + id);
     }
 
-    public static void deleteReading(Long id, Long readingid){
+    public static void deleteReading(Long id, Long readingid) {
         Station station = Station.findById(id);
         Reading reading = Reading.findById(readingid);
-        Logger.info ("Removing" + readingid);
+        Logger.info("Removing" + readingid);
         station.readings.remove(reading);
         station.save();
         reading.delete();

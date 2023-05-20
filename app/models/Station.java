@@ -12,8 +12,7 @@ import utilities.Conversions;
 import play.db.jpa.Model;
 
 @Entity
-public class Station extends Model
-{
+public class Station extends Model {
     public String name;
     public double latitude;
     public double longitude;
@@ -21,100 +20,111 @@ public class Station extends Model
     public List<Reading> readings = new ArrayList<Reading>();
 
 
-    public Station(String name, double latitude, double longitude)
-    {
+    public Station(String name, double latitude, double longitude) {
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
-    public double getLat(){
+
+    public double getLat() {
         return Conversions.latitude(this.latitude);
     }
-    public double getLong(){
+
+    public double getLong() {
         return Conversions.longitude(this.longitude);
     }
-    public Reading listLatestReading(){
+
+    public Reading listLatestReading() {
         if (readings.size() > 0) {
             Reading latestReading = readings.get(readings.size() - 1);
             return latestReading;
-        } else{
-            Reading latestReading = new Reading("",0, 0, 0, 0, 0);
+        } else {
+            Reading latestReading = new Reading("", 0, 0, 0, 0, 0);
             return latestReading;
         }
     }
-    public double getMaxTemp(){
+
+    public double getMaxTemp() {
         double maxTemp = 0;
-        if(readings.size() > 0){
+        if (readings.size() > 0) {
             maxTemp = readings.get(0).getTemperature();
-            for(Reading reading: readings){
-                if(reading.getTemperature() > maxTemp){
+            for (Reading reading : readings) {
+                if (reading.getTemperature() > maxTemp) {
                     maxTemp = reading.getTemperature();
                 }
             }
-        }return maxTemp;
+        }
+        return maxTemp;
     }
 
-    public double getMinTemp(){
+
+    public double getMinTemp() {
         double minTemp = 0;
-        if(readings.size() > 0){
+        if (readings.size() > 0) {
             minTemp = readings.get(0).getTemperature();
-            for(Reading reading: readings){
-                if(reading.getTemperature() < minTemp){
+            for (Reading reading : readings) {
+                if (reading.getTemperature() < minTemp) {
                     minTemp = reading.getTemperature();
                 }
             }
-        }return minTemp;
+        }
+        return minTemp;
     }
 
-    public double getMaxSpeed(){
+    public double getMaxSpeed() {
         double maxSpeed = 0;
-        if(readings.size() > 0){
+        if (readings.size() > 0) {
             maxSpeed = readings.get(0).getWindSpeed();
-            for(Reading reading: readings){
-                if(reading.getWindSpeed() > maxSpeed){
+            for (Reading reading : readings) {
+                if (reading.getWindSpeed() > maxSpeed) {
                     maxSpeed = reading.getWindSpeed();
                 }
             }
-        }return maxSpeed;
+        }
+        return maxSpeed;
     }
-    public double getMinSpeed(){
+
+    public double getMinSpeed() {
         double minSpeed = 0;
-        if(readings.size() > 0){
+        if (readings.size() > 0) {
             minSpeed = readings.get(0).getWindSpeed();
-            for(Reading reading: readings){
-                if(reading.getWindSpeed() < minSpeed){
+            for (Reading reading : readings) {
+                if (reading.getWindSpeed() < minSpeed) {
                     minSpeed = reading.getWindSpeed();
                 }
             }
-        }return minSpeed;
+        }
+        return minSpeed;
     }
 
-    public int getMaxPressure(){
+    public int getMaxPressure() {
         int maxPressure = 0;
-        if(readings.size() > 0){
+        if (readings.size() > 0) {
             maxPressure = readings.get(0).getPressure();
-            for(Reading reading: readings){
-                if(reading.getPressure() > maxPressure){
+            for (Reading reading : readings) {
+                if (reading.getPressure() > maxPressure) {
                     maxPressure = reading.getPressure();
                 }
             }
-        }return maxPressure;
+        }
+        return maxPressure;
     }
 
-    public int getMinPressure(){
+    public int getMinPressure() {
         int minPressure = 0;
-        if(readings.size() > 0){
+        if (readings.size() > 0) {
             minPressure = readings.get(0).getPressure();
-            for(Reading reading: readings){
-                if(reading.getPressure() < minPressure){
+            for (Reading reading : readings) {
+                if (reading.getPressure() < minPressure) {
                     minPressure = reading.getPressure();
                 }
             }
-        }return minPressure;
+        }
+        return minPressure;
     }
 
 }

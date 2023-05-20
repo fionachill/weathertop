@@ -9,8 +9,7 @@ import utilities.Conversions;
 import play.db.jpa.Model;
 
 @Entity
-public class Reading extends Model
-{
+public class Reading extends Model {
     public int code;
     public double temperature;
     public double windSpeed;
@@ -19,9 +18,7 @@ public class Reading extends Model
     public String date;
 
 
-
-    public Reading( String date, int code, double temperature, double windSpeed, int pressure, double windDirection)
-    {
+    public Reading(String date, int code, double temperature, double windSpeed, int pressure, double windDirection) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         this.date = formatter.format(LocalDateTime.now());
         this.code = code;
@@ -35,43 +32,49 @@ public class Reading extends Model
     ///GETTERS////
     ////////////*/
 
-    public int getCode(){
+    public int getCode() {
         return this.code;
     }
-    public double getTemperature(){
+
+    public double getTemperature() {
         return this.temperature;
     }
-    public double FTemp(){
+
+    public double FTemp() {
         return Conversions.convertToF(this.temperature);
     }
-    public double getWindSpeed(){
+
+    public double getWindSpeed() {
         return this.windSpeed;
     }
-    public int getPressure(){
+
+    public int getPressure() {
         return this.pressure;
     }
-    public double getWindDirection(){
+
+    public double getWindDirection() {
         return this.windDirection;
     }
 
-//    public String getDate(){return String(this.date)}
 
-    public String weatherConditions(){
+    public String weatherConditions() {
         return Conversions.convertWCode(this.code);
     }
 
-    public int getBeaufort(){
+    public int getBeaufort() {
         return Conversions.convertToBFort(this.windSpeed);
     }
 
-    public String getWindCompass(){
+    public String getWindCompass() {
         return Conversions.windCompass(this.windDirection);
     }
 
-    public double getWindChill(){
+    public double getWindChill() {
         return Conversions.windChill(this.temperature, this.windSpeed);
     }
 
-    public String getWCodeIcon(){ return Conversions.wCodeIcon(this.code);}
+    public String getWCodeIcon() {
+        return Conversions.wCodeIcon(this.code);
+    }
 
 }
