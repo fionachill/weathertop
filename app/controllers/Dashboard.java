@@ -1,6 +1,9 @@
 package controllers;
 
+
+import java.util.Collections;
 import java.util.List;
+
 
 import models.Member;
 import models.Station;
@@ -16,6 +19,7 @@ public class Dashboard extends Controller
     List<Station> stations = member.stations;
     render ("dashboard.html", stations);
   }
+
 
   public static void addStation(String name, double latitude, double longitude){
     Member member = Accounts.getLoggedInMember();
@@ -35,6 +39,5 @@ public class Dashboard extends Controller
     station.delete();
     redirect("/dashboard");
   }
-
 }
 

@@ -1,6 +1,9 @@
 package controllers;
 
+import java.util.Collections;
 import java.util.List;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import models.Member;
 import models.Station;
@@ -16,9 +19,10 @@ public class StationCtrl extends Controller {
         render("station.html", station);
     }
 
-    public static void addReading(Long id,int code, double temperature, double windSpeed, int pressure, double windDirection){
+
+    public static void addReading(String date, Long id,int code, double temperature, double windSpeed, int pressure, double windDirection){
         Member member = Accounts.getLoggedInMember();
-        Reading reading = new Reading(code, temperature, windSpeed, pressure, windDirection);
+        Reading reading = new Reading(date, code, temperature, windSpeed, pressure, windDirection);
         Station station = Station.findById(id);
         station.readings.add(reading);
         station.save();

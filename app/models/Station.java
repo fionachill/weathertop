@@ -42,7 +42,7 @@ public class Station extends Model
             Reading latestReading = readings.get(readings.size() - 1);
             return latestReading;
         } else{
-            Reading latestReading = new Reading(0, 0, 0, 0, 0);
+            Reading latestReading = new Reading("",0, 0, 0, 0, 0);
             return latestReading;
         }
     }
